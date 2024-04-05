@@ -107,7 +107,11 @@ body {
     margin: 0;
 }
 
-
+#game-container {
+   -webkit-user-select: none; /* Safari */
+    -ms-user-select: none; /* IE 10 and IE 11 */
+    user-select: none;
+}
 
 
     </style>
@@ -144,6 +148,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             alert('No more moves left! Game over!');
         }
+        clearInterval(timerInterval);
         location.reload();
     }
 
@@ -323,7 +328,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
-    setInterval(() => {
+    const timerInterval = setInterval(() => {
         gameTimer += 1/100;
         // Decrease the time progress bar
         document.getElementById('bar').style.width = `${(TIME - gameTimer) / TIME * 100}%`;
